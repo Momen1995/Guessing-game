@@ -1,11 +1,143 @@
-*{
-  margin : 0;
+* {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   border: none;
   outline: 0;
 }
 
-body{
+body {
   background-color: whitesmoke;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2rem;
+  overflow: hidden;
+  color: #222;
+}
+
+.game-container {
+  width: 50%;
+  background-color: white;
+  margin: 2rem auto 0;
+  border-radius: 5px;
+  padding: 0.8rem 1.4rem;
+  box-shadow: 13px 12px 15px -16px rgba(0, 0, 0, 0.1);
+}
+
+.game-container > h1 {
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  word-spacing: -10px;
+  letter-spacing: 2px;
+}
+
+.select-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+#game-change {
+  text-align: center;
+  margin: 0 auto;
+  border: 2px solid #222;
+  padding: 5px;
+  border-radius: 3px;
+  color: teal;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.input-range {
+  width: 80%;
+  margin: 1.5rem auto 1rem;
+}
+
+.range-calc {
+  width: 100%;
+}
+
+.score-board {
+  width: 80%;
+  margin: 1.2rem auto 1.8rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.attempt,
+.best-score {
+  background-color: rgb(248, 211, 211);
+  box-shadow: 13px 12px 15px -16px rgba(168, 95, 95, 0.1);
+  padding: 1.2rem 1.5rem;
+  border-radius: 3px;
+}
+
+.best-score {
+  background-color: rgb(174, 252, 252);
+}
+
+.guess-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.guess-container > p {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#input-number {
+  background-color: #eaeaea;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 1.3rem;
+}
+
+.btn-container {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.guess,
+.new-game {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: whitesmoke;
+}
+
+.guess {
+  background-color: teal;
+  outline: 2px solid crimson;
+}
+
+.new-game {
+  background-color: crimson;
+  outline: 2px solid teal;
+}
+
+.detail {
+  width: 70%;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game-played,.rate,.attempts,.range{
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: .6rem;
 }

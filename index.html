@@ -4,40 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guessing Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="game-container">
     <h1>Guess The Number</h1>
-    <select name="" id="">
+
+    <div class="select-option">
+      <select name="" id="game-change">
       <option value="easy">Easy</option>
       <option value="medium">Medium</option>
       <option value="hard">Hard</option>
     </select>
+    </div>
+
+    <div class="input-range">
+      <input type="range" name="" id="" class="range-calc">
+    </div>
 
     <div class="score-board">
-      <h3>Attempt</h3>
-      <h3>Best score</h3>
+      <div class="attempt">
+        <h3>Attempt</h3>
+        <p class="attempt-score"></p>
+      </div>
+      <div class="best-score">
+        <h3>Best score</h3>
+        <p class="score-best"></p>
+      </div>
     </div>
 
     <div class="guess-container">
-      <p>Quick solver</p>
-      <input type="number" name="" id="">
+      <input type="number" name="" id="input-number" placeholder="??">
     </div>
 
     <div class="btn-container">
-      <button>Guess</button>
-      <button>New game</button>
+      <button class="guess">Guess</button>
+      <button class="new-game">New game</button>
     </div>
 
-    <div>
+    <div class="detail">
       <div>
-        <p>Game played</p>
-        <p>Avg Attempts</p>
+        <p class="game-played">Game played: <span class="game-plays"></span></p>
+        <p class="attempts">Avg Attempts: <span id="avg-attempt"></span></p>
       </div>
 
       <div>
-        <p>Win Rate:</p>
-        <p>Range:</p>
+        <p class="rate">Win Rate: <span class="game-rate"></span></p>
+        <p class="range">Range: <span class="game-range"></span></p>
       </div>
     </div>
   </div>
