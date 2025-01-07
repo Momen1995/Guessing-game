@@ -3,16 +3,16 @@
 //element select
 const gameChange = document.querySelector(".game-change");
 const rangeCalc = document.querySelector(".range-calc");
-let attemptScore = document.querySelector(".attempt-score");
 const scoreBest = document.querySelector(".score-best");
 const inputNum = document.querySelector("#input-number");
 const guessBtn = document.querySelector(".guess");
 const newGameBtn = document.querySelector(".new-game");
 const avgScoreAttempt = document.querySelector(".avg-attempt");
-let gamePlays = document.querySelector(".game-plays");
 const gameRate = document.querySelector(".game-rate");
 const gameRange = document.querySelector(".game-range");
 const guessingText = document.querySelector(".guess-text");
+let attemptScore = document.querySelector(".attempt-score");
+let gamePlays = document.querySelector(".game-plays");
 
 let EASY_SECRET_NUMBER = Math.floor(Math.random() * 50 + 1);
 console.log(EASY_SECRET_NUMBER);
@@ -34,7 +34,14 @@ function displayGameRange(range) {
   gameRange.textContent = range;
 }
 
-//input validation 
+function gameCalcFun() {
+  if (rangeCalc.value === 25) displayGuessingText("Game over! You lose😢");
+  else {
+    rangeCalc.value++;
+  }
+}
+
+//input validation
 function validInput() {
   displayGuessingText("Enter a valid input!");
   rangeCalc.value++;
@@ -42,8 +49,8 @@ function validInput() {
 }
 
 //input value not match
-function inputValueNotMatch() {
-  displayGuessingText(inputValue > MEDIUM_SECRET_NUMBER ? "HIGH" : "LOW");
+function inputValueNotMatch(inputValue,secretNum) {
+  displayGuessingText(inputValue > secretNum ? "HIGH" : "LOW");
   rangeCalc.value++;
   attemptScore.textContent++;
 }
@@ -67,9 +74,9 @@ function myFunction() {
 
       if (inputValue < 1) {
         validInput();
-      } else if (inputValue !== MEDIUM_SECRET_NUMBER) {
-        inputValueNotMatch();
-      } else if (inputValue === MEDIUM_SECRET_NUMBER) {
+      } else if (inputValue !== EASY_SECRET_NUMBER) {
+        inputValueNotMatch(inputValue,EASY_SECRET_NUMBER);
+      } else if (inputValue === EASY_SECRET_NUMBER) {
         inputValueCorrect();
       }
     });
@@ -85,7 +92,7 @@ function myFunction() {
       if (inputValue < 1) {
         validInput();
       } else if (inputValue !== MEDIUM_SECRET_NUMBER) {
-        inputValueNotMatch();
+        inputValueNotMatch(inputValue,MEDIUM_SECRET_NUMBER);
       } else if (inputValue === MEDIUM_SECRET_NUMBER) {
         inputValueCorrect();
       }
@@ -102,7 +109,7 @@ function myFunction() {
       if (inputValue < 1) {
         validInput();
       } else if (inputValue !== HARD_SECRET_NUMBER) {
-        inputValueNotMatch();
+        inputValueNotMatch(inputValue,HARD_SECRET_NUMBER);
       } else if (inputValue === HARD_SECRET_NUMBER) {
         inputValueCorrect();
       }
@@ -111,4 +118,3 @@ function myFunction() {
 }
 
 window.onload = myFunction;
-
