@@ -1,59 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guessing Game</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="game-container">
-    <h1>Guess The Number</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guessing Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>Guess The Number</h1>
 
-    <div class="select-option">
-      <select name="" id="game-change">
-      <option value="easy">Easy</option>
-      <option value="medium">Medium</option>
-      <option value="hard">Hard</option>
-    </select>
-    </div>
-
-    <div class="input-range">
-      <input type="range" name="" id="" class="range-calc">
-    </div>
-
-    <div class="score-board">
-      <div class="attempt">
-        <h3>Attempt</h3>
-        <p class="attempt-score"></p>
-      </div>
-      <div class="best-score">
-        <h3>Best score</h3>
-        <p class="score-best"></p>
-      </div>
-    </div>
-
-    <div class="guess-container">
-      <input type="number" name="" id="input-number" placeholder="??">
-    </div>
-
-    <div class="btn-container">
-      <button class="guess">Guess</button>
-      <button class="new-game">New game</button>
-    </div>
-
-    <div class="detail">
-      <div>
-        <p class="game-played">Game played: <span class="game-plays"></span></p>
-        <p class="attempts">Avg Attempts: <span id="avg-attempt"></span></p>
+      <div class="select-option">
+        <select name="" class="game-change" onchange="myFunction()">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
       </div>
 
-      <div>
-        <p class="rate">Win Rate: <span class="game-rate"></span></p>
-        <p class="range">Range: <span class="game-range"></span></p>
+      <div class="input-range">
+        <input type="range" min="1" max="20" value="0" class="range-calc" />
+      </div>
+
+      <div class="score-board">
+        <div class="attempt">
+          <h3>Attempt</h3>
+          <p class="attempt-score"></p>
+        </div>
+        <div class="best-score">
+          <h3>Best score</h3>
+          <p class="score-best"></p>
+        </div>
+      </div>
+
+      <div class="guess-container">
+        <input type="number" name="" id="input-number" placeholder="??" />
+      </div>
+
+      <div class="btn-container">
+        <button class="guess">Guess</button>
+        <button class="new-game">New game</button>
+      </div>
+
+      <div class="result-container">
+        <h3 class="guess-text">dfgdf</h3>
+      </div>
+
+      <div class="detail">
+        <div>
+          <p class="game-played">
+            Game played: <span class="game-plays">0</span>
+          </p>
+          <p class="attempts">Avg Attempts: <span id="avg-attempt"></span></p>
+        </div>
+
+        <div>
+          <p class="rate">Win Rate: <span class="game-rate"></span></p>
+          <p class="range">Range: <span class="game-range"></span></p>
+        </div>
       </div>
     </div>
-  </div>
-  <script src="./main.js"></script>
-</body>
+    <script src="./main.js"></script>
+  </body>
 </html>
