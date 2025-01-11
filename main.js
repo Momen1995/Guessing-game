@@ -38,16 +38,22 @@ function updateGameRangeDisplay(range) {
 
 // Handle invalid input
 function handleInvalidInput() {
-  updateGuessingText("Enter a valid input!");
-  rangeCalculator.value++;
-  attemptScoreDisplay.textContent++;
+  if (rangeCalculator.value < 20) {
+    updateGuessingText("Enter a valid input!");
+    rangeCalculator.value++;
+    attemptScoreDisplay.textContent++;
+  }
+  checkLoseCondition();
 }
 
 // Handle incorrect input
 function handleIncorrectInput(inputValue, secretNumber) {
-  updateGuessingText(inputValue > secretNumber ? "HIGH" : "LOW");
-  rangeCalculator.value++;
-  attemptScoreDisplay.textContent++;
+  if (rangeCalculator.value < 20) {
+    updateGuessingText(inputValue > secretNumber ? "HIGH" : "LOW");
+    rangeCalculator.value++;
+    attemptScoreDisplay.textContent++;
+  }
+  checkLoseCondition();
 }
 
 // Handle correct input
@@ -55,6 +61,13 @@ function handleCorrectInput() {
   updateGuessingText("You win! 🎉🎆🎇");
   document.body.style.backgroundColor = "yellow";
   gamePlaysDisplay.textContent++;
+}
+
+// Check if the player has lost
+function checkLoseCondition() {
+  if (rangeCalculator.value >= 20) {
+   updateGuessingText("You lose the game!😢")
+  }
 }
 
 // Main game logic function
