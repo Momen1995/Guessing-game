@@ -26,6 +26,9 @@ attemptScoreDisplay.textContent = 0;
 bestScoreDisplay.textContent = 0;
 gamePlaysDisplay.textContent = 0;
 
+// Array to store wrong guesses
+const wrongGuesses = [];
+
 // Display the guessing text
 function updateGuessingText(text) {
   guessingTextDisplay.textContent = text;
@@ -38,7 +41,7 @@ function updateGameRangeDisplay(range) {
 
 // Handle invalid input
 function handleInvalidInput() {
-  if (rangeCalculator.value < 20) {
+  if (rangeCalculator.value < 21) {
     updateGuessingText("Enter a valid input!");
     rangeCalculator.value++;
     attemptScoreDisplay.textContent++;
@@ -48,9 +51,12 @@ function handleInvalidInput() {
 
 // Handle incorrect input
 function handleIncorrectInput(inputValue, secretNumber) {
-  if (rangeCalculator.value < 20) {
+  if (rangeCalculator.value < 21) {
     updateGuessingText(inputValue > secretNumber ? "HIGH" : "LOW");
     rangeCalculator.value++;
+    wrongGuesses.push(inputValue)
+    const showWrongAns = wrongGuesses.join(",")
+    numberGuessingContainer.textContent = showWrongAns;
     attemptScoreDisplay.textContent++;
   }
   checkLoseCondition();
@@ -65,15 +71,14 @@ function handleCorrectInput() {
 
 // Check if the player has lost
 function checkLoseCondition() {
-  if (rangeCalculator.value >= 20) {
-   updateGuessingText("You lose the game!😢")
+  if (rangeCalculator.value >= 21) {
+    updateGuessingText("You lose the game!😢");
   }
 }
 
 // Main game logic function
 function initializeGame() {
   let selectedGameMode = gameModeSelect.value;
-  const averageAttempts = [];
 
   // Easy mode logic
   if (selectedGameMode === "easy") {

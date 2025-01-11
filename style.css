@@ -164,7 +164,7 @@ body {
 
 .number-guessing{
   background-color: rgb(119, 168, 168);
-  width: 25px;
+  width: 80%;
   height: 25px;
   padding: 15px;
   border-radius: 2px;
@@ -172,8 +172,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.2rem;
+  overflow-x:auto;
 }
 
 
