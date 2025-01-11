@@ -17,7 +17,7 @@ body {
 .game-container {
   width: 50%;
   background-color: white;
-  margin: 1.5rem auto 0;
+  margin: 1.2rem auto 0;
   border-radius: 10px;
   padding: 0.8rem 1.4rem;
   box-shadow: 13px 12px 15px -16px rgba(0, 0, 0, 0.1);
@@ -35,7 +35,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0;
+  margin: .7rem 0;
 }
 
 .game-change {
@@ -51,7 +51,7 @@ body {
 
 .input-range {
   width: 80%;
-  margin: 1.5rem auto 1rem;
+  margin: 1.2rem auto 1rem;
 }
 
 .range-calc {
@@ -60,7 +60,7 @@ body {
 
 .score-board {
   width: 80%;
-  margin: 1.2rem auto 1.8rem;
+  margin: 1rem auto 1.3rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -89,7 +89,7 @@ body {
 
 .guess-container {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.3rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -111,7 +111,7 @@ body {
 
 .btn-container {
   display: flex;
-  gap: 4rem;
+  gap: 3rem;
   justify-content: center;
   align-items: center;
   margin-top: 2.5rem;
@@ -139,7 +139,7 @@ body {
 
 .detail {
   width: 70%;
-  margin: 2rem auto;
+  margin: 1rem auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,7 +152,28 @@ body {
 }
 
 .result-container{
-  margin: 2rem auto;
+  margin: 1.3rem auto;
   text-align: center;
   font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
 }
+
+.number-guessing{
+  background-color: rgb(119, 168, 168);
+  width: 25px;
+  height: 25px;
+  padding: 15px;
+  border-radius: 2px;
+  color: #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+

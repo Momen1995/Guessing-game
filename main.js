@@ -1,120 +1,118 @@
 "use strict";
 
-//element select
-const gameChange = document.querySelector(".game-change");
-const rangeCalc = document.querySelector(".range-calc");
-const scoreBest = document.querySelector(".score-best");
-const inputNum = document.querySelector("#input-number");
-const guessBtn = document.querySelector(".guess");
-const newGameBtn = document.querySelector(".new-game");
-const avgScoreAttempt = document.querySelector(".avg-attempt");
-const gameRate = document.querySelector(".game-rate");
-const gameRange = document.querySelector(".game-range");
-const guessingText = document.querySelector(".guess-text");
-let attemptScore = document.querySelector(".attempt-score");
-let gamePlays = document.querySelector(".game-plays");
+// Element selection
+const gameModeSelect = document.querySelector(".game-change");
+const rangeCalculator = document.querySelector(".range-calc");
+const bestScoreDisplay = document.querySelector(".score-best");
+const numberInput = document.querySelector("#input-number");
+const guessButton = document.querySelector(".guess");
+const newGameButton = document.querySelector(".new-game");
+const averageScoreAttempt = document.querySelector(".avg-attempt");
+const gameRating = document.querySelector(".game-rate");
+const gameRangeDisplay = document.querySelector(".game-range");
+const guessingTextDisplay = document.querySelector(".guess-text");
+const numberGuessingContainer = document.querySelector(".number-guessing");
+let attemptScoreDisplay = document.querySelector(".attempt-score");
+let gamePlaysDisplay = document.querySelector(".game-plays");
 
-let EASY_SECRET_NUMBER = Math.floor(Math.random() * 50 + 1);
-console.log(EASY_SECRET_NUMBER);
+// Secret numbers for different difficulty levels
+let easySecretNumber = Math.floor(Math.random() * 50 + 1);
+let mediumSecretNumber = Math.floor(Math.random() * 100 + 1);
+let hardSecretNumber = Math.floor(Math.random() * 200 + 1);
+console.log(easySecretNumber);
 
-let MEDIUM_SECRET_NUMBER = Math.floor(Math.random() * 100 + 1);
-console.log(MEDIUM_SECRET_NUMBER);
-let HARD_SECRET_NUMBER = Math.floor(Math.random() * 200 + 1);
+// Initialize score displays
+attemptScoreDisplay.textContent = 0;
+bestScoreDisplay.textContent = 0;
+gamePlaysDisplay.textContent = 0;
 
-attemptScore.textContent = Number(0);
-scoreBest.textContent = Number(0);
-
-//DISPLAY GUESSING TEXT
-function displayGuessingText(text) {
-  guessingText.textContent = text;
+// Display the guessing text
+function updateGuessingText(text) {
+  guessingTextDisplay.textContent = text;
 }
 
-//DISPLAY RANGE (HARD,MEDIUM,EASY)
-function displayGameRange(range) {
-  gameRange.textContent = range;
+// Display the game range based on difficulty level
+function updateGameRangeDisplay(range) {
+  gameRangeDisplay.textContent = range;
 }
 
-function gameCalcFun() {
-  if (rangeCalc.value === 25) displayGuessingText("Game over! You lose😢");
-  else {
-    rangeCalc.value++;
-  }
+// Handle invalid input
+function handleInvalidInput() {
+  updateGuessingText("Enter a valid input!");
+  rangeCalculator.value++;
+  attemptScoreDisplay.textContent++;
 }
 
-//input validation
-function validInput() {
-  displayGuessingText("Enter a valid input!");
-  rangeCalc.value++;
-  attemptScore.textContent++;
+// Handle incorrect input
+function handleIncorrectInput(inputValue, secretNumber) {
+  updateGuessingText(inputValue > secretNumber ? "HIGH" : "LOW");
+  rangeCalculator.value++;
+  attemptScoreDisplay.textContent++;
 }
 
-//input value not match
-function inputValueNotMatch(inputValue,secretNum) {
-  displayGuessingText(inputValue > secretNum ? "HIGH" : "LOW");
-  rangeCalc.value++;
-  attemptScore.textContent++;
-}
-
-//winning function
-function inputValueCorrect() {
-  displayGuessingText("You win🎉🎆🎇");
+// Handle correct input
+function handleCorrectInput() {
+  updateGuessingText("You win! 🎉🎆🎇");
   document.body.style.backgroundColor = "yellow";
+  gamePlaysDisplay.textContent++;
 }
 
-// main function
-function myFunction() {
-  let gameChangeValue = gameChange.value;
+// Main game logic function
+function initializeGame() {
+  let selectedGameMode = gameModeSelect.value;
+  const averageAttempts = [];
 
-  //easy
-  if (gameChangeValue === "easy") {
-    displayGameRange("1-50");
+  // Easy mode logic
+  if (selectedGameMode === "easy") {
+    updateGameRangeDisplay("1-50");
 
-    guessBtn.addEventListener("click", () => {
-      let inputValue = Number(inputNum.value);
+    guessButton.addEventListener("click", () => {
+      let inputValue = Number(numberInput.value);
 
       if (inputValue < 1) {
-        validInput();
-      } else if (inputValue !== EASY_SECRET_NUMBER) {
-        inputValueNotMatch(inputValue,EASY_SECRET_NUMBER);
-      } else if (inputValue === EASY_SECRET_NUMBER) {
-        inputValueCorrect();
+        handleInvalidInput();
+      } else if (inputValue !== easySecretNumber) {
+        handleIncorrectInput(inputValue, easySecretNumber);
+      } else {
+        handleCorrectInput();
       }
     });
   }
 
-  //medium
-  else if (gameChangeValue === "medium") {
-    displayGameRange("1-100");
+  // Medium mode logic
+  else if (selectedGameMode === "medium") {
+    updateGameRangeDisplay("1-100");
 
-    guessBtn.addEventListener("click", () => {
-      let inputValue = Number(inputNum.value);
+    guessButton.addEventListener("click", () => {
+      let inputValue = Number(numberInput.value);
 
       if (inputValue < 1) {
-        validInput();
-      } else if (inputValue !== MEDIUM_SECRET_NUMBER) {
-        inputValueNotMatch(inputValue,MEDIUM_SECRET_NUMBER);
-      } else if (inputValue === MEDIUM_SECRET_NUMBER) {
-        inputValueCorrect();
+        handleInvalidInput();
+      } else if (inputValue !== mediumSecretNumber) {
+        handleIncorrectInput(inputValue, mediumSecretNumber);
+      } else {
+        handleCorrectInput();
       }
     });
   }
 
-  //hard
-  else if (gameChangeValue === "hard") {
-    displayGameRange("1-200");
+  // Hard mode logic
+  else if (selectedGameMode === "hard") {
+    updateGameRangeDisplay("1-200");
 
-    guessBtn.addEventListener("click", () => {
-      let inputValue = Number(inputNum.value);
+    guessButton.addEventListener("click", () => {
+      let inputValue = Number(numberInput.value);
 
       if (inputValue < 1) {
-        validInput();
-      } else if (inputValue !== HARD_SECRET_NUMBER) {
-        inputValueNotMatch(inputValue,HARD_SECRET_NUMBER);
-      } else if (inputValue === HARD_SECRET_NUMBER) {
-        inputValueCorrect();
+        handleInvalidInput();
+      } else if (inputValue !== hardSecretNumber) {
+        handleIncorrectInput(inputValue, hardSecretNumber);
+      } else {
+        handleCorrectInput();
       }
     });
   }
 }
 
-window.onload = myFunction;
+// Initialize the game when the window loads
+window.onload = initializeGame;
