@@ -64,7 +64,9 @@ function handleIncorrectInput(inputValue, secretNumber) {
 
 // Handle correct input
 function handleCorrectInput() {
-  updateGuessingText("You win! 🎉🎆🎇");
+  updateGuessingText(
+    `It took you ${wrongGuesses.length} attempts to win! 🎉🎆🎇`
+  );
   document.body.style.backgroundColor = "yellow";
   gamePlaysDisplay.textContent++;
 }

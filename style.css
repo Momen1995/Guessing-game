@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: whitesmoke;
+  background-color: #a5d6a7;
   font-family: "Courier New", Courier, monospace;
   font-size: 1.2rem;
   overflow: hidden;
@@ -15,13 +15,15 @@ body {
 }
 
 .game-container {
-  width: 50%;
-  background-color: white;
-  margin: 1.2rem auto 0;
+  width: 43%;
+  background-color: #a5d6a7;
+  border: 2px solid #388e3c;
+  margin: 1.3rem auto 0;
   border-radius: 10px;
-  padding: 0.8rem 1.4rem;
-  box-shadow: 13px 12px 15px -16px rgba(0, 0, 0, 0.1);
+  padding: 0.7rem 1rem;
+  box-shadow: 2px 6px 10px 2px rgba(0, 0, 0, 0.1);
 }
+
 
 .game-container > h1 {
   text-align: center;
@@ -29,6 +31,7 @@ body {
   text-transform: uppercase;
   word-spacing: -10px;
   letter-spacing: 2px;
+  color: #444;
 }
 
 .select-option {
@@ -42,25 +45,75 @@ body {
   text-align: center;
   margin: 0 auto;
   border: 2px solid #222;
-  padding: 5px;
-  border-radius: 3px;
+  padding: 8px;
+  border-radius: 5px;
   color: teal;
   font-weight: 600;
   font-size: 1rem;
+  background-color: #f1f1f1;
 }
 
 .input-range {
-  width: 80%;
-  margin: 1.2rem auto 1rem;
+  width: 70%;
+  margin: .6rem auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.input-range > span{
+  background-color: #245f26;
+  padding: 2px 5px;
+  border-radius: 2px;
+  color: #f0f0f0;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .range-calc {
+  -webkit-appearance: none;
   width: 100%;
+  height: 12px;
+  background-color: #ff4c4c;
+  border-radius: 6px;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.range-calc:hover {
+  background-color: #ff7878;
+}
+
+.range-calc::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 2px solid #ff4c4c;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.range-calc::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 2px solid #ff4c4c;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.range-calc::-webkit-slider-thumb:hover,
+.range-calc::-moz-range-thumb:hover {
+  background-color: #ff7878;
 }
 
 .score-board {
   width: 80%;
-  margin: 1rem auto 1.3rem;
+  margin: .8rem auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -68,23 +121,20 @@ body {
 
 .attempt,
 .best-score {
-  background-color: rgb(248, 211, 211);
-  box-shadow: 13px 12px 15px -16px rgba(168, 95, 95, 0.1);
+  background-color: #f0f0f0; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   padding: 1rem 1.5rem;
-  border-radius: 3px;
+  border-radius: 5px;
   text-align: center;
 }
 
-.attempt-score,.score-best{
+.attempt-score,
+.score-best {
   font-size: 1.4rem;
-  color: crimson;
+  color: #333333; 
   text-align: center;
   font-weight: 600;
   margin-top: 5px;
-}
-
-.best-score {
-  background-color: rgb(174, 252, 252);
 }
 
 .guess-container {
@@ -98,14 +148,15 @@ body {
 .guess-container > p {
   font-size: 1rem;
   font-weight: 600;
+  color: #555;
 }
 
 #input-number {
   background-color: #eaeaea;
-  width: 50%;
+  width: 60%;
   padding: 10px;
   text-align: center;
-  border-radius: 3px;
+  border-radius: 5px;
   font-size: 1.3rem;
 }
 
@@ -114,67 +165,69 @@ body {
   gap: 3rem;
   justify-content: center;
   align-items: center;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
 }
 
 .guess,
 .new-game {
   display: inline-block;
   padding: 0.7rem 1.6rem;
-  border-radius: 3px;
+  border-radius: 5px;
   font-size: 1rem;
   font-weight: 500;
   color: whitesmoke;
+  cursor: pointer;
 }
 
 .guess {
   background-color: teal;
-  outline: 2px solid crimson;
+  border: 2px solid crimson;
 }
 
 .new-game {
   background-color: crimson;
-  outline: 2px solid teal;
+  border: 2px solid teal;
 }
 
 .detail {
   width: 70%;
-  margin: 1rem auto;
+  margin: .8rem auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.game-played,.rate,.attempts,.range{
+.game-played,
+.rate,
+.attempts,
+.range {
   font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: .6rem;
+  margin-bottom: 0.5rem;
 }
 
-.result-container{
-  margin: 1.3rem auto;
+.result-container {
+  margin: 1.1rem auto;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   display: flex;
   flex-direction: column;
   gap: 15px;
   justify-content: center;
   align-items: center;
+  word-spacing: -7px;
 }
 
-.number-guessing{
+.number-guessing {
   background-color: rgb(119, 168, 168);
   width: 80%;
-  height: 25px;
-  padding: 15px;
-  border-radius: 2px;
+  padding: 13px;
+  border-radius: 5px;
   color: #eaeaea;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 1.2rem;
-  overflow-x:auto;
+  font-size: 1rem;
+  overflow-x: auto;
 }
-
-
