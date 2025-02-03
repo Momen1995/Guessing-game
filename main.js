@@ -3,7 +3,7 @@
 // Element selection
 const gameModeSelect = document.querySelector(".game-change");
 const rangeCalculator = document.querySelector(".range-calc");
-const bestScoreDisplay = document.querySelector(".score-best");
+let bestScoreDisplay = document.querySelector(".score-best");
 const numberInput = document.querySelector("#input-number");
 const guessButton = document.querySelector(".guess");
 const newGameButton = document.querySelector(".new-game");
@@ -14,12 +14,15 @@ const guessingTextDisplay = document.querySelector(".guess-text");
 const numberGuessingContainer = document.querySelector(".number-guessing");
 let attemptScoreDisplay = document.querySelector(".attempt-score");
 let gamePlaysDisplay = document.querySelector(".game-plays");
+let selectedGameMode;
 
 // Secret numbers for different difficulty levels
 let easySecretNumber = Math.floor(Math.random() * 50 + 1);
 let mediumSecretNumber = Math.floor(Math.random() * 100 + 1);
 let hardSecretNumber = Math.floor(Math.random() * 200 + 1);
 console.log(easySecretNumber);
+console.log(mediumSecretNumber);
+console.log(hardSecretNumber);
 
 // Initialize score displays
 attemptScoreDisplay.textContent = 0;
@@ -27,7 +30,9 @@ bestScoreDisplay.textContent = 0;
 gamePlaysDisplay.textContent = 0;
 
 // Array to store wrong guesses
-const wrongGuesses = [];
+let wrongGuesses = [];
+let bestScore = [];
+console.log(bestScore)
 
 // Display the guessing text
 function updateGuessingText(text) {
@@ -54,8 +59,8 @@ function handleIncorrectInput(inputValue, secretNumber) {
   if (rangeCalculator.value < 21) {
     updateGuessingText(inputValue > secretNumber ? "HIGH" : "LOW");
     rangeCalculator.value++;
-    wrongGuesses.push(inputValue)
-    const showWrongAns = wrongGuesses.join(",")
+    wrongGuesses.push(inputValue);
+    const showWrongAns = wrongGuesses.join(",");
     numberGuessingContainer.textContent = showWrongAns;
     attemptScoreDisplay.textContent++;
   }
@@ -69,6 +74,13 @@ function handleCorrectInput() {
   );
   document.body.style.backgroundColor = "yellow";
   gamePlaysDisplay.textContent++;
+  bestScore.push(wrongGuesses.length)
+  
+  //best score find
+  const filterBestScore = bestScore.reduce((acc,value) => acc < value ? acc : value,bestScore[0])
+  console.log(filterBestScore)
+  
+  bestScoreDisplay.textContent = filterBestScore;
 }
 
 // Check if the player has lost
@@ -80,7 +92,7 @@ function checkLoseCondition() {
 
 // Main game logic function
 function initializeGame() {
-  let selectedGameMode = gameModeSelect.value;
+   selectedGameMode = gameModeSelect.value;
 
   // Easy mode logic
   if (selectedGameMode === "easy") {
@@ -133,6 +145,24 @@ function initializeGame() {
     });
   }
 }
+
+newGameButton.addEventListener("click", () => {
+  selectedGameMode = gameModeSelect.value;
+  wrongGuesses = [];
+
+  easySecretNumber = Math.floor(Math.random() * 50 + 1);
+  console.log(easySecretNumber)
+  mediumSecretNumber = Math.floor(Math.random() * 100 + 1);
+  hardSecretNumber = Math.floor(Math.random() * 200 + 1);
+
+  rangeCalculator.value = 0;
+  attemptScoreDisplay.textContent = 0;
+  numberGuessingContainer.textContent = "";
+
+  updateGuessingText("Guessing number...");
+  document.body.style.backgroundColor = "#a5d6a7";
+  numberInput.value = "";
+});
 
 // Initialize the game when the window loads
 window.onload = initializeGame;

@@ -11,7 +11,7 @@
       <h1>Guess The Number</h1>
 
       <div class="select-option">
-        <select name="" class="game-change" onchange="myFunction()">
+        <select name="" class="game-change" onchange="initializeGame()">
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
@@ -54,11 +54,11 @@
           <p class="game-played">
             Game played: <span class="game-plays"></span>
           </p>
-          <p class="attempts">Avg Attempts: <span id="avg-attempt">0</span></p>
+          <p class="attempts">Avg Attempts: <span id="avg-attempt"></span></p>
         </div>
 
         <div>
-          <p class="rate">Win Rate: <span class="game-rate">100</span>%</p>
+          <p class="rate">Win Rate: <span class="game-rate"></span>%</p>
           <p class="range">Range: <span class="game-range"></span></p>
         </div>
       </div>
